@@ -1,0 +1,93 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+const {ObjectID} = require('mongodb');
+
+const {paginate} = require('mongoose-paginate');
+
+
+
+var {mongoose} = require('./db/mongoose');
+var {boxmac} = require('./models/mac');
+
+var app = express();
+
+
+app.use(bodyParser.json());
+
+app.post('/boxmac', (req, res) => {
+  var mac = new boxmac({
+    ProductName: req.body.ProductName,
+    OriginCountry: req.body.OriginCountry,
+    StoreBrand: req.body.StoreBrand,
+    Type: req.body.Type,
+    Pasta: req.body.Pasta,
+    ADC: req.body.ADC,
+    PastaType: req.body.PastaType,
+    Org: req.body.Org,
+    Veg: req.body.Veg,
+    Mic: req.body.Mic,
+    Exp: req.body.Exp,
+    PriceRaw: req.body.PriceRaw,
+    SauceType: req.body.SauceType,
+    BoxSize: req.body.BoxSize,
+    EpNo: req.body.EpNo,
+    URL: req.body.URL,
+    Price: req.body.Price,
+    Rating: req.body.Rating,
+    Comments: req.body.Comments
+  });
+
+
+
+  mac.save().then((doc) => {
+    res.send(doc);
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+// app.get('/boxmac/:page&:pageNum', (req, res) => {
+//   var page = req.params.page;
+//   var pageNum = req.params.pageNum;
+//
+//
+//   boxmac.find().skip((parseInt(page)) * 10).limit(parseInt(pageNum)).then((macdb) => {
+//     res.send({macdb});
+//   }, (e) =>  {
+//     res.status(400).send(e);
+//
+//   });
+//
+// });
+app.get('/boxmac', (req, res) => {
+  boxmac.find().then((macdb) => {
+    res.send({macdb});
+  }, (e) =>  {
+    res.status(400).send(e);
+
+  });
+});
+app.get('/id/:id', (req, res) => {
+  var id = req.params.id;
+
+
+  boxmac.findById(id).then((boxmac) => {
+    if (!boxmac) {
+      return res.status(404).send();
+    }
+
+    res.send({boxmac});
+  }).catch((e) => {
+    res.status(400).send();
+  });
+
+
+});
+
+
+
+app.listen(3000, () => {
+  console.log('Server is up on port 3000');
+});
+
+module.exports = {app};

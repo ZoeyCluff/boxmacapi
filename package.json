@@ -1,0 +1,29 @@
+{
+  "name": "boxmacdb",
+  "version": "1.0.0",
+  "description": "Boxmac Mac Database. Coded in React with Express / Mongoose backend",
+  "main": "index.js",
+  "author": "",
+  "scripts": {
+    "test": "karma start",
+    "start": "node ./server/server.js"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jsdoc": "^3.4.3",
+    "lodash": "^4.17.3",
+    "mongodb": "^2.2.5",
+    "mongoose": "^4.7.2",
+    "mongoose-paginate": "^5.0.3"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
+    "mochawesome": "^1.5.4",
+    "nodemon": "^1.10.2",
+    "supertest": "^2.0.0"
+  }
+}
