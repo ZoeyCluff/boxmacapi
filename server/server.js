@@ -63,7 +63,7 @@ app.get('/boxmac/', (req, res) => {
     res.send({macdb});
   }, (e) =>  {
     res.status(404).send(e);
-    console.log(e);
+    console.log("You forgot something important... Please try harder next time. This expects a page and a limit.");
 
   });
 
@@ -77,7 +77,7 @@ app.get('/boxmac', (req, res) => {
     res.send({macdb});
   }, (e) =>  {
     res.status(404).send(e);
-    console.log(e);
+    console.log('You somehow fucked this query up, funnily enough, there are no inputs. How you fucked up is beyond me.');
 
   });
 });
@@ -97,7 +97,7 @@ app.get('/findID/', (req, res) => {
     res.send({macdb});
   }).catch((e) => {
     res.status(404).send();
-    console.log(e);
+    console.log('Try entering an ID that actually exists fuckface.');
   });
 
 
@@ -118,7 +118,7 @@ var item = req.query.item;
 
   }, (e) => {
     res.status(404).send(e)
-    console.log(e);
+    console.log('Forgetting something? fieldName and item are required....');
 
   });
 });
@@ -132,7 +132,7 @@ var row = req.query.row;
     console.log(macdb.length);
   }, (e) => {
     res.status(404).send(e)
-    console.log(e);
+    console.log("Forgot the input did we? I'm disappointed.");
 
   });
 });
