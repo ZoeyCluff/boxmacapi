@@ -7,6 +7,9 @@ const {ObjectID} = require('mongodb');
 const { escapeRegExp } = require("lodash");
 const {paginate} = require('mongoose-paginate');
 
+
+
+
 // Require DB info and model. I know the mongoose.js file works, the model is a crapshoot. //
 
 var {mongoose} = require('./db/mongoose');
@@ -63,7 +66,8 @@ app.get('/boxmac/', (req, res) => {
     res.send({macdb});
   }, (e) =>  {
     res.status(404).send(e);
-    console.log("You forgot something important... Please try harder next time. This expects a page and a limit.");
+    console.log(e);
+    console.log(window.json);
 
   });
 
@@ -77,7 +81,7 @@ app.get('/boxmac2/', (req, res) => {
     res.send({macdb});
   }, (e) =>  {
     res.status(404).send(e);
-    console.log('You somehow fucked this query up, funnily enough, there are no inputs. How you fucked up is beyond me.');
+    console.log(e);
 
   });
 });
@@ -97,7 +101,7 @@ app.get('/findID/', (req, res) => {
     res.send({macdb});
   }).catch((e) => {
     res.status(404).send();
-    console.log('Try entering an ID that actually exists fuckface.');
+    console.log(e);
   });
 
 
@@ -118,7 +122,7 @@ var item = req.query.item;
 
   }, (e) => {
     res.status(404).send(e)
-    console.log('Forgetting something? fieldName and item are required....');
+    console.log(e);
 
   });
 });
@@ -132,7 +136,7 @@ var row = req.query.row;
     console.log(macdb.length);
   }, (e) => {
     res.status(404).send(e)
-    console.log("Forgot the input did we? I'm disappointed.");
+    console.log(e);
 
   });
 });

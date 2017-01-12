@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 const {paginate} = require('mongoose-paginate');
 
 
-var boxmac = mongoose.model('macdbs', {
+var boxmac = mongoose.model('boxmac', {
   ProductName: {
     type: String,
     required: true,
