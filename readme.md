@@ -1,9 +1,11 @@
 # Boxmac API for the BoxMac youtube show by Red Cow Entertainment #
 
-## API by Zoey Cluff, database contents by Frankie Frain ##
+## API by Zoey Cluff, database contents by Frankie Frain of Red Cow Entertainment ##
 
 The BoxmacDB API powers the boxmacdb.com website. It's powered by node with the MongooseJS package and MongoDB database. This is a quick and dirty API and coded by someone without much of a clue (if I'm honest). It works in my (somewhat) through testing at least as far as I expect it to work. Currently it only supports GET requests, however there's a POST request in the code but it's not wired into anything. (Want to get V1 of the site online as I originally said it'd be done by Jan 1st).
 
+
+The DB is located at [Boxmac DB](https://boxmacdb.com) and Red Cow Entertainment's site is located [here](http://redcowentertainment.com/). All rights are owned by Red Cow Entertainment. I just did this because they have a really nice site, and a craptastic google doc for a listing of Macs and I was bored... Plus it's good for learning.
 
 ### Endpoints ###
 
@@ -20,7 +22,7 @@ The closest thing to actually pagination I can get with my limited experience. U
 (GET)
 Returns all rows in the database in JSON.
 
-/findID/:
+/findID/?id=:
 Returns the information based on a given ID. Used to display product information pages.
 
 /result/?fieldName=*&item=*:
@@ -29,4 +31,4 @@ Quick and dirty search. Both fields are required. On the site fieldName is hardc
 
 /total/?row=*:
 
-Returns the distinct fields of a given field. IE /total/?row=Store\Brand will return all brands (only once)
+Returns the distinct fields of a given field. IE /total/?row=Store\Brand will return all brands (only once no matter how many times a given name is in the database). replace * with a fieldname
