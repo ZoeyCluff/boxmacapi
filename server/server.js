@@ -76,7 +76,7 @@ app.get('/boxmac/', (req, res) => {
 // returns all fields in the DB. Actually returns the actual number of results now, that only took 6 fucking hours of debugging. This works (as of testing while sober!) //
 
 
-app.get('/boxmac2/', (req, res) => {
+app.get('/boxmac/', (req, res) => {
   boxmac.find().then((macdb) => {
     res.send({macdb});
   }, (e) =>  {
@@ -140,6 +140,7 @@ var row = req.query.row;
 
   });
 });
+
 
 // starts express server and exports the App... is the module.exports necessary? It's a react thing FWIW //
 
