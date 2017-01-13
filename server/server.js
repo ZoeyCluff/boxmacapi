@@ -18,6 +18,11 @@ var {boxmac} = require('./models/mac');
 
 // uh, this calls express I think, and does something with bodyParser. Fuck if I know what it does //
 var app = express();
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 app.use(bodyParser.json());
 
 // Inserts information into the database. this actually won't be wired to anything in V1. Probably broken beyond repair in current form //
@@ -112,11 +117,12 @@ app.get('/findID/', (req, res) => {
 app.get('/result', (req, res) => {
 var field = req.query.fieldName;
 var item = req.query.item;
+var limit = req.query.limit;
+var page = req.query.page;
 
 
 
-
-   boxmac.find({ [field]:  { "$regex": escapeRegExp(item),  "$options": "i"  }} ).then((macdb) => {
+   boxmac.find({ [field]:  { "$regex": escapeRegExp(item),  "$options": "i"  }} ).skip((parseInt(page)) * 10).limit(parseInt(limit)).then((macdb) => {
 
     res.send({macdb});
 
